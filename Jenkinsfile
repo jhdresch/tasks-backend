@@ -23,12 +23,12 @@ pipeline{
 
             }
         }
-            stage('SONAR QUALITY GATE BACKEND'){
+        stage('SONAR QUALITY GATE BACKEND'){
     
             steps{
                 def qualitygate = waitForQualityGate()
-                if (qualitygate.status != "OK") {
-                    error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+                if (qualitygate.task.status != "SUCCESS") {
+                    error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.task.status}"
                 }
 
             }
