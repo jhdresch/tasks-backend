@@ -29,7 +29,7 @@ pipeline{
             steps {
                sleep(5)  
               timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate()
+                waitForQualityGate abortPipeline: true
               }
             }
         }
