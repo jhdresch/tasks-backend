@@ -23,16 +23,14 @@ pipeline{
 
             }
         }
-        stage('SONAR QUALITY GATE BACKEND'){
-    
-            steps{
-                def qualitygate = waitForQualityGate()
-                if (qualitygate.task.status != "SUCCESS") {
-                    error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.task.status}"
-                }
-
-            }
-        }
+        stage("Quality Gate"){
+          timeout(time: 1, unit: 'HOURS') {
+              def qg = waitForQualityGate()
+              if (qg.status != 'OK') {
+                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+              }
+          }
+      }
         
     }
     
