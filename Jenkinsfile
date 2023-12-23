@@ -18,7 +18,7 @@ pipeline{
 
             steps{
                  withSonarQubeEnv('SONAR_SERVER_LOCAL') {
-                  sh 'mvn clean package sonar:sonar -Dsonar.projectKey=deploy-back -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.java.binaries=target'
+                  sh 'mvn clean package sonar:sonar -Dsonar.projectKey=deploy-back -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=jesus1983 -Dsonar.java.binaries=target'
                  
               }
 
