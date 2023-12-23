@@ -27,7 +27,7 @@ pipeline{
         stage("Quality Gate") {
             steps {
               timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate abortPipeline: true
+                waitForQualityGate abortPipeline: true, credentialsId: '4d12036aa6a8c61d65cedff1661c6cefdff659dc'
               }
             }
         }
