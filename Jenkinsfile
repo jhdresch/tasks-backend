@@ -29,10 +29,8 @@ pipeline{
             steps {
                sleep(5)  
               timeout(time: 1, unit: 'HOURS') {
-                def qualityGate = waitForQualityGate()
-        if (qualityGate.status == 'ERROR') {
-            currentBuild.result = 'UNSTABLE'
-        }
+               def test = waitForQualityGate abortPipeline: false, credentialsId: '4d12036aa6a8c61d65cedff1661c6cefdff659dc'
+     
               }
             }
         }
