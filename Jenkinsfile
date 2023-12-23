@@ -25,14 +25,11 @@ pipeline{
             }
         }
         stage("Quality Gate") {
-             environment {
-                
-            }  
            
             steps {
                sleep(5)  
               timeout(time: 1, unit: 'HOURS') {
-             waitForQualityGate abortPipeline: false, credentialsId: 'LOGIN_QUALITY_GATE'
+                     waitForQualityGate abortPipeline: false, credentialsId: 'LOGIN_QUALITY_GATE'
      
               }
             }
