@@ -27,8 +27,7 @@ pipeline{
         stage("Quality Gate") {
             steps {
               timeout(time: 1, unit: 'HOURS') {
-                def logss = waitForQualityGate()
-                sh "echo ${logss}"
+                waitForQualityGate abortPipeline: false
               }
             }
         }
