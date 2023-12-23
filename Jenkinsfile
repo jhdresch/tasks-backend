@@ -29,9 +29,10 @@ pipeline{
             steps {
                sleep(5)  
               timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate(){
-                    
-                }
+                def qualityGate = waitForQualityGate()
+        if (qualityGate.status == 'ERROR') {
+            currentBuild.result = 'UNSTABLE'
+        }
               }
             }
         }
