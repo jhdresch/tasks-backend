@@ -25,11 +25,14 @@ pipeline{
             }
         }
         stage("Quality Gate") {
+             environment {
+                scannerHome =  waitForQualityGate abortPipeline: false, credentialsId: '4d12036aa6a8c61d65cedff1661c6cefdff659dc'
+            }  
            
             steps {
                sleep(5)  
               timeout(time: 1, unit: 'HOURS') {
-               teste = waitForQualityGate abortPipeline: false, credentialsId: '4d12036aa6a8c61d65cedff1661c6cefdff659dc'
+               sh " echo ${scannerHome}"
      
               }
             }
