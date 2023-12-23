@@ -26,10 +26,7 @@ pipeline{
             stage('SONAR QUALITY GATE BACKEND'){
     
             steps{
-                 sleep(15)
-                 timeout(time: 1 , unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-              }
+                waitForQualityGate abortPipeline: true
 
             }
         }
