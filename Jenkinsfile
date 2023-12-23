@@ -23,13 +23,11 @@ pipeline{
 
             }
         }
-        stage('QUALITY GATE BACKEND'){
-           
+            stage('SONAR QUALITY GATE BACKEND'){
+    
             steps{
-                timeout(time:1,unit:'MINUTES'){
-                     waitForQualityGate abortPipeline: true
-                }
-               
+                 timeout(time: 1 , unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
               }
 
             }
