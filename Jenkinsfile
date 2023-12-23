@@ -29,7 +29,7 @@ pipeline{
             steps {
                sleep(5)  
               timeout(time: 1, unit: 'HOURS') {
-               def test = waitForQualityGate abortPipeline: false, credentialsId: '4d12036aa6a8c61d65cedff1661c6cefdff659dc'
+               teste = waitForQualityGate abortPipeline: false, credentialsId: '4d12036aa6a8c61d65cedff1661c6cefdff659dc'
      
               }
             }
