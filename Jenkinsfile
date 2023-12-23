@@ -18,7 +18,7 @@ pipeline{
 
             steps{
                  withSonarQubeEnv('SONAR_SERVER_LOCAL') {
-                  sh 'mvn clean package sonar:sonar -Dsonar.projectKey=deploy-back -Dsonar.host.url=http://localhost:9000 -Dsonar.login=4d12036aa6a8c61d65cedff1661c6cefdff659dc  -Dsonar.java.binaries=target'
+                  sh 'mvn clean package sonar:sonar  -Dsonar.host.url=http://localhost:9000 -Dsonar.login=4d12036aa6a8c61d65cedff1661c6cefdff659dc  -Dsonar.java.binaries=target'
                  
               }
 
@@ -32,7 +32,7 @@ pipeline{
             steps {
                sleep(5)  
               timeout(time: 1, unit: 'HOURS') {
-               sh " echo ${scannerHome}"
+             
      
               }
             }
