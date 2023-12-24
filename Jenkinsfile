@@ -6,7 +6,7 @@ pipeline{
             steps{
                 sh 'mvn clean package -DskipTests=true'
                 script {
-                    version_war = "TEST"
+                    version_war = sh 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout'
                 }               
                
                 sh "echo !!! ${version_war}"   
