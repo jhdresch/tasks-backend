@@ -43,8 +43,11 @@ pipeline{
         stage("API TEST BACKEND") {
            
             steps {
-                git 'https://github.com/jhdresch/teste-integracao'
-                sh 'mvn test'
+                dir('api-test'){
+                    git 'https://github.com/jhdresch/teste-integracao'
+                    sh 'mvn test'
+                }
+               
 
             }
         }
