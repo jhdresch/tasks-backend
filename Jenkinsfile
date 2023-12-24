@@ -1,4 +1,4 @@
-def version_war
+def version_war = "test"
 
 pipeline{
     agent any
@@ -6,7 +6,7 @@ pipeline{
         stage('Build BACKEND'){
             steps{
                 sh 'mvn clean package -DskipTests=true'
-                version_war =  sh 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout'
+                
                 sh "echo !!! ${version_war}"   
             }
         }
