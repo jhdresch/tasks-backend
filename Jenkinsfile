@@ -64,7 +64,7 @@ pipeline{
            
             steps {
                 dir('funcional-test'){
-                    git 'https://github.com/jhdresch/teste-funcional'
+                    git branch: 'main', url: 'https://github.com/jhdresch/teste-funcional'
                     sh 'mvn clean test'
                 } 
             }
