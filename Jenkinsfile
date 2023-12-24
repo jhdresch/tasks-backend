@@ -58,8 +58,17 @@ pipeline{
                     deploy adapters : [tomcat8(credentialsId:'TOMCAT_LOGIN',path:'',url:'http://localhost:8001/')],contextPath:'tasks',war:'target/tasks.war'
                 } 
             }
-            
+
         } 
+        stage("FUNCIONAL TEST") {
+           
+            steps {
+                dir('funcional-test'){
+                    git 'https://github.com/jhdresch/teste-funcional'
+                    sh 'mvn test'
+                } 
+            }
+        }
         
     }
     
