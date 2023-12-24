@@ -5,7 +5,10 @@ pipeline{
         stage('Build BACKEND'){
             steps{
                 sh 'mvn clean package -DskipTests=true'
-                version_war = "TEST"
+                script {
+                    version_war = "TEST"
+                }               
+               
                 sh "echo !!! ${version_war}"   
             }
         }
