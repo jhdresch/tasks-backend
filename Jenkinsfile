@@ -27,7 +27,7 @@ pipeline{
         stage("Quality Gate") {
            
             steps {
-              sleep(1)  
+              sleep(5)  
               timeout(time: 1, unit: 'MINUTES') {
                      waitForQualityGate abortPipeline: true
      
@@ -65,7 +65,7 @@ pipeline{
             steps {
                 dir('funcional-test'){
                     git 'https://github.com/jhdresch/teste-funcional'
-                    sh 'mvn test'
+                    sh 'mvn clean test'
                 } 
             }
         }
