@@ -11,7 +11,8 @@ pipeline{
                     version_war = sh( script:'mvn help:evaluate -Dexpression=project.version -q -DforceStdout',returnStdout: true).trim()
                     context = sh( script:'mvn help:evaluate -Dexpression=project.version -q -DforceStdout',returnStdout: true).trim()
                     imageBack = context+":"+version_war
-                }               
+                } 
+                sh "echo ${imageBack}"              
                
                
             }
