@@ -1,6 +1,6 @@
 def version_war
 def context
-
+def nameBuildDocker
 
 pipeline{
     agent any
@@ -15,7 +15,8 @@ pipeline{
               
                 
                
-                sh "echo !!! ${context}:${version_war}"   
+                sh "echo !!! ${context}:${version_war}"  
+                nameBuildDocker =  "${context}:${version_war}
             }
         }
         stage('TESTES UNITARIOS BACKEND'){
