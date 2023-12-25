@@ -21,4 +21,6 @@ services:
       - prod_postgresql_data:/var/lib/postgresql/data  
 networks:
   prod_net_back:
+volumes:
+  prod_postgresql:
  

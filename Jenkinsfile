@@ -13,7 +13,7 @@ pipeline{
                     imageBack = context+":"+version_war
                 }                
                
-                sh "echo !!! ${version_war}"   
+                sh "echo !!! ${imageBack}"   
             }
         }
         stage("DEPLOY BACKEND") {
