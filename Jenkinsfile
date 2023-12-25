@@ -19,7 +19,7 @@ pipeline{
         stage("DEPLOY BACKEND") {
             environment {
                 IMAGEM_DOCKER_COMPOSE = "${imageBack}"
-                DOCKER_COMPOSE_CONTAINER    = "${imageBack}-prd"
+                DOCKER_COMPOSE_CONTAINER    = "${context}-prd"
              }
            
             steps {
