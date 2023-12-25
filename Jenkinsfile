@@ -11,7 +11,7 @@ pipeline{
                 script {
                     version_war = sh( script:'mvn help:evaluate -Dexpression=project.version -q -DforceStdout',returnStdout: true).trim()
                     context = sh( script:'mvn help:evaluate -Dexpression=project.name -q -DforceStdout',returnStdout: true).trim()
-                    nameBuildDocker =  "testeeeeeeeeeee"
+                    nameBuildDocker =  context":"version_war
                 } 
               
                 
