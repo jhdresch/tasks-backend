@@ -1,13 +1,5 @@
 version: '3'
 services:
-  container_back:
-    image: ${IMAGEM_DOCKER_COMPOSE}
-    container_name: ${DOCKER_COMPOSE_CONTAINER}
-    ports:
-      - "8003:8080"
-    networks:
-      - prod_net_back
-    restart: always  
   db:
     container_name: pg-prod
     image: postgres:9.6
@@ -18,10 +10,28 @@ services:
       - POSTGRES_DB=tasks
     volumes:
       - prod_postgresql:/var/lib/postgresql
-      - prod_postgresql_data:/var/lib/postgresql/data  
+      - prod_postgresql_data:/var/lib/postgresql/data
+
+  backend:
+    container_name: ${DOCKER_COMPOSE_CONTAINER}
+    image: ${IMAGEM_DOCKER_COMPOSE}
+    networks:
+      - prod_net_back
+    ports:
+      - 9998:8080
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWD=passwd
+    depends_on:
+      - db
 networks:
   prod_net_back:
+
 volumes:
   prod_postgresql:
   prod_postgresql_data:
+
+
  
