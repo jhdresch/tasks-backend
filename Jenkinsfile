@@ -10,13 +10,15 @@ pipeline{
                 sh 'mvn clean package -DskipTests=true'
                 script {
                     version_war = sh( script:'mvn help:evaluate -Dexpression=project.version -q -DforceStdout',returnStdout: true).trim()
-                    context = sh( script:'mvn help:evaluate -Dexpression=project.name -q -DforceStdout',returnStdout: true).trim()
+                    context = sh( script:'mvn help:evaluate -Dexpression=project.name -q -DforceStdout',returnStdout: true).trim()+
+                     nameBuildDocker =  "${context}:${version_war}"
                 } 
               
                 
                
                 sh "echo !!! ${context}:${version_war}"  
-                nameBuildDocker =  "${context}:${version_war}
+                sh "echo !!! ${nameBuildDocker}"  
+               
             }
         }
         stage('TESTES UNITARIOS BACKEND'){
