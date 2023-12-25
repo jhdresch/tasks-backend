@@ -10,8 +10,8 @@ pipeline{
                 sh 'mvn clean package -DskipTests=true'
                 script {
                     version_war = sh( script:'mvn help:evaluate -Dexpression=project.version -q -DforceStdout',returnStdout: true).trim()
-                    context = sh( script:'mvn help:evaluate -Dexpression=project.name -q -DforceStdout',returnStdout: true).trim()+
-                     nameBuildDocker =  "testeeeeeeeeeee"
+                    context = sh( script:'mvn help:evaluate -Dexpression=project.name -q -DforceStdout',returnStdout: true).trim()
+                    nameBuildDocker =  "testeeeeeeeeeee"
                 } 
               
                 
