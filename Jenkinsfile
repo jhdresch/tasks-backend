@@ -1,6 +1,6 @@
 def version_war
 def context
-def nameBuildDocker
+
 
 pipeline{
     agent any
@@ -12,10 +12,10 @@ pipeline{
                     version_war = sh( script:'mvn help:evaluate -Dexpression=project.version -q -DforceStdout',returnStdout: true).trim()
                     context = sh( script:'mvn help:evaluate -Dexpression=project.name -q -DforceStdout',returnStdout: true).trim()
                 } 
-                nameBuildDocker = "${context}:${version_war}"
+              
                 
                
-                sh "echo !!! ${version_war}"   
+                sh "echo !!! ${context}:${version_war}"   
             }
         }
         stage('TESTES UNITARIOS BACKEND'){
@@ -26,13 +26,9 @@ pipeline{
        
         stage("DEPLOY BACKEND") {
            
-            environment {
-                IMAGEM_DOCKER_COMPOSE = "${nameBuildDocker}"
-                DOCKER_COMPOSE_CONTAINER = "${context}_PRD"
-            }  
+       
             steps {
                 sh "docker build -t ${nameBuildDocker} ."
-                sh "docker-compose up"
             }
         }
         
