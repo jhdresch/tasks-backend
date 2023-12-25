@@ -1,0 +1,24 @@
+version: '3'
+services:
+  container_back:
+    image: ${IMAGEM_DOCKER_COMPOSE}
+    container_name: ${DOCKER_COMPOSE_CONTAINER}
+    ports:
+      - "8003:8080"
+    networks:
+      - prod_net_back
+    restart: always  
+  db:
+    container_name: pg-prod
+    image: postgres:9.6
+    networks:
+      - prod_net_back
+    environment:
+      - POSTGRES_PASSWORD=passwd
+      - POSTGRES_DB=tasks
+    volumes:
+      - prod_postgresql:/var/lib/postgresql
+      - prod_postgresql_data:/var/lib/postgresql/data  
+networks:
+  prod_net_back:
+ 
